@@ -26,14 +26,15 @@ body {
 }
 
 /* The page is as tall as the screen and the content is centred in it, so on a
-   normal desktop or laptop everything fits without scrolling. On very small
-   screens it simply scrolls. Sizes scale with the screen height (vh). */
+   normal desktop or laptop everything fits without scrolling. Every size below
+   scales smoothly with the height of the window (vh), within sensible limits.
+   On very small screens it simply scrolls. */
 .page {
-  max-width: 680px;
+  max-width: 760px;
   min-height: 100vh;
   min-height: 100svh;
   margin: 0 auto;
-  padding: clamp(24px, 5vh, 64px) 24px;
+  padding: clamp(16px, 4vh, 56px) 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,14 +49,14 @@ body {
 }
 
 .logo {
-  width: clamp(84px, 17vh, 148px);
-  height: clamp(84px, 17vh, 148px);
-  margin-bottom: clamp(14px, 3vh, 28px);
+  width: clamp(76px, 19vh, 176px);
+  height: clamp(76px, 19vh, 176px);
+  margin-bottom: clamp(10px, 2.6vh, 28px);
 }
 
 .motto {
   margin: 0;
-  font-size: 13px;
+  font-size: clamp(11px, 1.9vh, 15px);
   font-weight: 500;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -64,15 +65,15 @@ body {
 
 .divider {
   width: 48px;
-  margin: clamp(16px, 4vh, 40px) auto;
+  margin: clamp(14px, 3.6vh, 44px) auto;
   border: none;
   border-top: 1px solid var(--line);
 }
 
 .intro p {
-  margin: 0 0 clamp(10px, 2vh, 18px);
-  font-size: 16px;
-  line-height: 1.65;
+  margin: 0 0 clamp(8px, 1.8vh, 18px);
+  font-size: clamp(14px, 2.5vh, 19px);
+  line-height: 1.6;
 }
 
 .intro p:last-child {
@@ -80,13 +81,13 @@ body {
 }
 
 .cars {
-  margin-top: clamp(18px, 4vh, 36px);
+  margin-top: clamp(14px, 3.6vh, 40px);
 }
 
 .cars-button {
   display: inline-block;
-  padding: 14px 40px;
-  font-size: 13px;
+  padding: clamp(10px, 2vh, 18px) clamp(30px, 4vh, 44px);
+  font-size: clamp(12px, 1.9vh, 15px);
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -103,8 +104,8 @@ body {
 }
 
 .contact h2 {
-  margin: 0 0 8px;
-  font-size: 13px;
+  margin: 0 0 clamp(2px, 0.8vh, 8px);
+  font-size: clamp(11px, 1.9vh, 15px);
   font-weight: 500;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -112,7 +113,7 @@ body {
 }
 
 .contact a {
-  font-size: 16px;
+  font-size: clamp(14px, 2.4vh, 18px);
   color: var(--ink);
   text-decoration: none;
   border-bottom: 1px solid var(--line);
@@ -123,42 +124,10 @@ body {
   opacity: 0.55;
 }
 
-/* Low windows (small laptops, lots of browser toolbars): tighten up a bit more. */
-@media (max-height: 700px) {
-  .page {
-    padding-top: 16px;
-    padding-bottom: 16px;
-  }
-  .logo {
-    width: 72px;
-    height: 72px;
-    margin-bottom: 10px;
-  }
-  .motto {
-    font-size: 12px;
-  }
-  .divider {
-    margin: 14px auto;
-  }
-  .intro p {
-    font-size: 15px;
-    line-height: 1.5;
-    margin-bottom: 8px;
-  }
-  .cars {
-    margin-top: 14px;
-  }
-  .cars-button {
-    padding: 10px 32px;
-  }
-  .contact h2 {
-    margin-bottom: 4px;
-  }
-}
-
+/* Phones: a little less side padding and slightly smaller body text. */
 @media (max-width: 480px) {
   .page {
-    padding: 32px 20px;
+    padding: 20px;
   }
   .intro p {
     font-size: 15px;
