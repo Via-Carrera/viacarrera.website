@@ -25,15 +25,19 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Everything sits in one centred column. */
+/* The page is as tall as the screen and the content is centred in it, so on a
+   normal desktop or laptop everything fits without scrolling. On very small
+   screens it simply scrolls. Sizes scale with the screen height (vh). */
 .page {
-  max-width: 560px;
+  max-width: 680px;
   min-height: 100vh;
+  min-height: 100svh;
   margin: 0 auto;
-  padding: 96px 24px 72px;
+  padding: clamp(24px, 5vh, 64px) 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
 }
 
@@ -44,9 +48,9 @@ body {
 }
 
 .logo {
-  width: 148px;
-  height: 148px;
-  margin-bottom: 28px;
+  width: clamp(84px, 17vh, 148px);
+  height: clamp(84px, 17vh, 148px);
+  margin-bottom: clamp(14px, 3vh, 28px);
 }
 
 .motto {
@@ -60,14 +64,15 @@ body {
 
 .divider {
   width: 48px;
-  margin: 48px auto;
+  margin: clamp(16px, 4vh, 40px) auto;
   border: none;
   border-top: 1px solid var(--line);
 }
 
 .intro p {
-  margin: 0 0 20px;
+  margin: 0 0 clamp(10px, 2vh, 18px);
   font-size: 16px;
+  line-height: 1.65;
 }
 
 .intro p:last-child {
@@ -75,7 +80,7 @@ body {
 }
 
 .cars {
-  margin-top: 44px;
+  margin-top: clamp(18px, 4vh, 36px);
 }
 
 .cars-button {
@@ -118,15 +123,44 @@ body {
   opacity: 0.55;
 }
 
-@media (max-width: 480px) {
+/* Low windows (small laptops, lots of browser toolbars): tighten up a bit more. */
+@media (max-height: 700px) {
   .page {
-    padding: 64px 20px 56px;
+    padding-top: 16px;
+    padding-bottom: 16px;
   }
   .logo {
-    width: 116px;
-    height: 116px;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 10px;
+  }
+  .motto {
+    font-size: 12px;
   }
   .divider {
-    margin: 40px auto;
+    margin: 14px auto;
+  }
+  .intro p {
+    font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 8px;
+  }
+  .cars {
+    margin-top: 14px;
+  }
+  .cars-button {
+    padding: 10px 32px;
+  }
+  .contact h2 {
+    margin-bottom: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: 32px 20px;
+  }
+  .intro p {
+    font-size: 15px;
   }
 }
